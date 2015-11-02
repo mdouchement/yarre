@@ -1,0 +1,21 @@
+div class="row collapse"
+  h1 #{settings.title}
+  p MRI #{RUBY_VERSION}
+
+  div class="row"
+    label Your regular expression:
+    div class="columns small-9"
+      input id="pattern" type="text" placeholder=".*"
+    div class="columns small-3"
+      input id="modifier" type="text" placeholder="i"
+
+  div class="row"
+    label Your test string:
+    div class="columns small-12"
+      textarea id="input" placeholder="my string"
+
+  div class="row"
+    label Matches:
+    div class="columns large-12"
+      textarea id="match_groups" placeholder="my string"
+    button TestMe

@@ -1,0 +1,10 @@
+production: &common_settings
+    title: Y.A.R.R.E.
+    description: Yet Another Ruby Regex Editor
+    static: true
+
+test:
+    <<: *common_settings
+
+development:
+    <<: *common_settings
