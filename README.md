@@ -2,6 +2,12 @@
 
 > This is where you can plop your app's documentation :)
 
+### Devlopment
+Start Puma webserver with the following command:
+```sh
+bundle exec guard
+```
+
 ###Deployment
 I built this to be effortless, here is how to deploy:
 

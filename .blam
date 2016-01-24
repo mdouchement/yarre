@@ -1,4 +1,0 @@
-tests_dir: spec/unit/lib
-additional_test_dirs: [spec/system/lib]
-source_dir: lib
-test_suffix: spec

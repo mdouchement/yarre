@@ -36,6 +36,8 @@ module App
       # Javascript placed before the closing <head> tag
       js :head, [
         '/js/vendor/custom.modernizr.js',
+        '/js/vendor/underscore.js', # required by Backbone
+        '/js/vendor/backbone.js',
         '/js/head.js'
       ]
 
