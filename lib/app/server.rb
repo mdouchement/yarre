@@ -37,6 +37,7 @@ module App
       js :head, [
         '/js/vendor/custom.modernizr.js',
         '/js/vendor/underscore.js', # required by Backbone
+        '/js/vendor/jquery.js', # required by Backbone
         '/js/vendor/backbone.js',
         '/js/head.js'
       ]
@@ -64,7 +65,17 @@ module App
       status 200
       content_type :json
 
-      json RegexProcessor.new(params[:pattern], params[:input]).process
+      json RegexProcessor.new(aparams[:pattern], aparams[:content], aparams[:modifiers]).process
+    end
+
+    private
+
+    def aparams
+      @aparams ||= params.merge(if request.env['CONTENT_TYPE'] == 'application/json'
+                                  JSON.parse(request.body.read, symbolize_names: true) || {}
+                                else
+                                  {}
+                                end)
     end
   end
 end

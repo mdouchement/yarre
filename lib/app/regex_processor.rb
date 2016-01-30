@@ -1,19 +1,38 @@
 module App
   class RegexProcessor
-    attr_accessor :regex, :input
+    attr_accessor :regex, :content
 
-    def initialize(pattern, input)
-      @regex = Regexp.new pattern
-      @input = input
+    # TODO support modifier
+    def initialize(pattern, content, modifiers)
+      modifiers = modifiers.split('').map do |m|
+        case m
+        when 'i'
+          Regexp::IGNORECASE
+        when 'x'
+          Regexp::EXTENDED
+        when 'm'
+          Regexp::MULTILINE
+        when 'n'
+          Regexp::NOENCODING
+        else
+          nil
+        end
+      end
+
+      @regex = Regexp.new(pattern, modifiers.compact.reduce(:|))
+      @content = content
     end
 
     def process
-      m = input.match(regex)
-      {
-        match_result: m.to_s,
-        match_groups: m.captures,
-        group_names: m.names
-      }
+      if (m = content.match(regex))
+        {
+          match_result: m.to_s,
+          match_groups: m.captures,
+          group_names: m.names
+        }
+      else
+        {}
+      end
     end
   end
 end

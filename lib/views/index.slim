@@ -3,19 +3,34 @@ div class="row collapse"
   p MRI #{RUBY_VERSION}
 
   div class="row"
-    label Your regular expression:
+    label Regular expression:
     div class="columns small-9"
       input id="pattern" type="text" placeholder=".*"
     div class="columns small-3"
-      input id="modifier" type="text" placeholder="i"
+      input id="modifiers" type="text" placeholder="i"
 
   div class="row"
-    label Your test string:
+    label Content:
     div class="columns small-12"
-      textarea id="input" placeholder="my string"
+      textarea id="content" placeholder="my string"
 
-  div class="row"
-    label Matches:
-    div class="columns large-12"
-      textarea id="match_groups" placeholder="my string"
+  /! Backbone template
+  script type="text/template" id="yarre-result-template"
+    |  <div class="row">
+    |    <label>Match result:</label>
+    |    <div class="columns small-12">
+    |      <input type="text" placeholder="<%= model.get('match_result') %>">
+    |    </div>
+    |    <% if (model.hasGroups()) { %>
+    |      <label>Match groups:  DEFINE DEDICATED TEMPLATE for groups</label>
+    |      <div class="columns small-12">
+    |        <input type="text" placeholder="<%= model.get('match_groups') %>">
+    |      </div>
+    |    <% } %>
+    |  </div>
+
+  div id="yarre-result-container"
+
+
+  br
     button TestMe
