@@ -31,7 +31,11 @@ module App
           group_names: m.names
         }
       else
-        {}
+        {
+          match_result: '',
+          match_groups: [],
+          group_names: []
+        }
       end
     end
   end

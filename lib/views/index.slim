@@ -14,23 +14,21 @@ div class="row collapse"
     div class="columns small-12"
       textarea id="content" placeholder="my string"
 
-  /! Backbone template
+  /! Backbone templates
   script type="text/template" id="yarre-result-template"
-    |  <div class="row">
-    |    <label>Match result:</label>
-    |    <div class="columns small-12">
-    |      <input type="text" placeholder="<%= model.get('match_result') %>">
-    |    </div>
-    |    <% if (model.hasGroups()) { %>
-    |      <label>Match groups:  DEFINE DEDICATED TEMPLATE for groups</label>
-    |      <div class="columns small-12">
-    |        <input type="text" placeholder="<%= model.get('match_groups') %>">
-    |      </div>
-    |    <% } %>
+    |  <label>Match result:</label>
+    |  <div class="columns small-12">
+    |    <input type="text" placeholder="<%= model.get('match_result') %>">
     |  </div>
 
-  div id="yarre-result-container"
+  script type="text/template" id="yarre-result-groups-template"
+    |  <label>Match groups:</label>
+    |  <div class="columns small-12">
+    |   <% _.each(groups ,function(group){ %>
+    |     <input type="text" placeholder="<%= group.id %>: <%= group.capture %>">
+    |   <% }); %>
+    |  </div>
 
-
-  br
-    button TestMe
+  div class="row"
+    div id="yarre-result-container"
+    div id="yarre-result-groups-container"
